@@ -1,0 +1,369 @@
+basePath: /
+definitions:
+  models.CommentRequest:
+    properties:
+      message:
+        example: zayyan
+        type: string
+      photo_id:
+        example: 1
+        type: integer
+    required:
+    - message
+    type: object
+  models.CommentRequestUpdate:
+    properties:
+      message:
+        example: zayyan
+        type: string
+    required:
+    - message
+    type: object
+  models.PhotoRequest:
+    properties:
+      caption:
+        example: zayyan
+        type: string
+      photo_url:
+        example: zayyan
+        type: string
+      title:
+        example: zayyan
+        type: string
+    required:
+    - photo_url
+    - title
+    type: object
+  models.SocialMediaRequest:
+    properties:
+      name:
+        example: zayyan
+        type: string
+      social_media_url:
+        example: zayyan
+        type: string
+    required:
+    - name
+    - social_media_url
+    type: object
+  models.UserLoginRequest:
+    properties:
+      email:
+        example: zayyan@mail.com
+        type: string
+      password:
+        example: zayyan
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  models.UserRegisterRequest:
+    properties:
+      age:
+        example: 9
+        type: integer
+      email:
+        example: zayyan@mail.com
+        type: string
+      password:
+        example: zayyan
+        minLength: 6
+        type: string
+      username:
+        example: zayyan
+        type: string
+    required:
+    - age
+    - email
+    - password
+    - username
+    type: object
+  models.UserUpdate:
+    properties:
+      email:
+        example: zayyan@mail.com
+        type: string
+      username:
+        example: zayyan
+        type: string
+    required:
+    - email
+    - username
+    type: object
+host: localhost:7000
+info:
+  contact:
+    email: zayyanramadhan@gmail.com
+    name: zayyan
+  description: Sample API Spec for MyGram
+  termsOfService: http://swagger.io/terms/
+  title: MyGram API
+  version: v2.0
+paths:
+  /comments:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Comment
+      tags:
+      - comment
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: comment info
+        in: body
+        name: comment
+        required: true
+        schema:
+          $ref: '#/definitions/models.CommentRequest'
+      produces:
+      - application/json
+      responses: {}
+      summary: Create Comment
+      tags:
+      - comment
+  /comments/{commentId}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: commentId
+        in: path
+        name: commentId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete Comment
+      tags:
+      - comment
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: commentId
+        in: path
+        name: commentId
+        required: true
+        type: integer
+      - description: comment info
+        in: body
+        name: comment
+        required: true
+        schema:
+          $ref: '#/definitions/models.CommentRequestUpdate'
+      produces:
+      - application/json
+      responses: {}
+      summary: Update Comment
+      tags:
+      - comment
+  /photos:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Photo
+      tags:
+      - photo
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Photo info
+        in: body
+        name: Photo
+        required: true
+        schema:
+          $ref: '#/definitions/models.PhotoRequest'
+      produces:
+      - application/json
+      responses: {}
+      summary: Create Photo
+      tags:
+      - photo
+  /photos/{photoId}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: photoId
+        in: path
+        name: photoId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete Photo
+      tags:
+      - photo
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: photoId
+        in: path
+        name: photoId
+        required: true
+        type: integer
+      - description: Photo info
+        in: body
+        name: Photo
+        required: true
+        schema:
+          $ref: '#/definitions/models.PhotoRequest'
+      produces:
+      - application/json
+      responses: {}
+      summary: Update Photo
+      tags:
+      - photo
+  /socialmedias:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Get SocialMedia
+      tags:
+      - socialmedia
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: SocialMedia info
+        in: body
+        name: SocialMedia
+        required: true
+        schema:
+          $ref: '#/definitions/models.SocialMediaRequest'
+      produces:
+      - application/json
+      responses: {}
+      summary: Create SocialMedia
+      tags:
+      - socialmedia
+  /socialmedias/{socialMediaId}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: socialMediaId
+        in: path
+        name: socialMediaId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete SocialMedia
+      tags:
+      - socialmedia
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: socialMediaId
+        in: path
+        name: socialMediaId
+        required: true
+        type: integer
+      - description: SocialMedia info
+        in: body
+        name: SocialMedia
+        required: true
+        schema:
+          $ref: '#/definitions/models.SocialMediaRequest'
+      produces:
+      - application/json
+      responses: {}
+      summary: Update SocialMedia
+      tags:
+      - socialmedia
+  /users:
+    delete:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete
+      tags:
+      - user
+  /users/{userId}:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: userId
+        in: path
+        name: userId
+        required: true
+        type: integer
+      - description: user info
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserUpdate'
+      produces:
+      - application/json
+      responses: {}
+      summary: Update
+      tags:
+      - user
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: user info
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserLoginRequest'
+      produces:
+      - application/json
+      responses: {}
+      summary: Login
+      tags:
+      - user
+  /users/logout:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: Logout
+      tags:
+      - user
+  /users/register:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: user info
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserRegisterRequest'
+      produces:
+      - application/json
+      responses: {}
+      summary: Register
+      tags:
+      - user
+swagger: "2.0"
