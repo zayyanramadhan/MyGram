@@ -6,7 +6,6 @@ import (
 	_ "final_MyGram/docs"
 	"final_MyGram/repositories"
 	"final_MyGram/routes"
-	"fmt"
 	"log"
 	"os"
 
@@ -30,6 +29,7 @@ func main() {
 		}
 		port = os.Getenv("APP_PORT")
 	}
+	runport := ":" + port
 
 	db.Connect()
 	mdb := db.DbManager()
@@ -45,6 +45,5 @@ func main() {
 	socialmediaController := controllers.NewSocialMediaController(&repoSocialmedia, &repoAuth)
 
 	app := routes.NewRouter(authController, userController, photoController, commentController, socialmediaController)
-	fmt.Printf("%# v", port)
-	app.Start(port)
+	app.Start(runport)
 }
