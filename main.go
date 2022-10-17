@@ -22,9 +22,13 @@ import (
 // @contact.email zayyanramadhan@gmail.com
 
 func main() {
-	errEnv := godotenv.Load(".env")
-	if errEnv != nil {
-		log.Fatalf("Error read env file with err: %s", errEnv)
+	port := os.Getenv("APP_PORT")
+	if port == "" {
+		errEnv := godotenv.Load(".env")
+		if errEnv != nil {
+			log.Fatalf("Error read env file with err: %s", errEnv)
+		}
+		port = os.Getenv("APP_PORT")
 	}
 
 	db.Connect()
@@ -41,7 +45,6 @@ func main() {
 	socialmediaController := controllers.NewSocialMediaController(&repoSocialmedia, &repoAuth)
 
 	app := routes.NewRouter(authController, userController, photoController, commentController, socialmediaController)
-	port := os.Getenv("APP_PORT")
 	fmt.Printf("%# v", port)
 	app.Start(port)
 }
