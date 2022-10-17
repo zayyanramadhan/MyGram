@@ -21,6 +21,7 @@ import (
 // @contact.email zayyanramadhan@gmail.com
 
 func main() {
+	domain := ""
 	port := os.Getenv("APP_PORT")
 	if port == "" {
 		errEnv := godotenv.Load(".env")
@@ -28,8 +29,10 @@ func main() {
 			log.Fatalf("Error read env file with err: %s", errEnv)
 		}
 		port = os.Getenv("APP_PORT")
+	} else {
+		domain = os.Getenv("DOMAIN")
 	}
-	runport := ":" + port
+	runport := domain + ":" + port
 
 	db.Connect()
 	mdb := db.DbManager()
