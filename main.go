@@ -30,7 +30,7 @@ func main() {
 		}
 		port = os.Getenv("APP_PORT")
 	} else {
-		domain = os.Getenv("DOMAIN")
+
 	}
 	runport := domain + ":" + port
 
