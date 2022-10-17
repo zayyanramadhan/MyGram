@@ -6,7 +6,9 @@ import (
 	_ "final_MyGram/docs"
 	"final_MyGram/repositories"
 	"final_MyGram/routes"
+	"fmt"
 	"log"
+	"os"
 
 	"github.com/joho/godotenv"
 )
@@ -16,7 +18,6 @@ import (
 // @version v2.0
 // @termsOfService http://swagger.io/terms/
 // @BasePath /
-// @host localhost:7000
 // @contact.name zayyan
 // @contact.email zayyanramadhan@gmail.com
 
@@ -40,5 +41,7 @@ func main() {
 	socialmediaController := controllers.NewSocialMediaController(&repoSocialmedia, &repoAuth)
 
 	app := routes.NewRouter(authController, userController, photoController, commentController, socialmediaController)
-	app.Start(":7000")
+	port := os.Getenv("APP_PORT")
+	fmt.Printf("%# v", port)
+	app.Start(port)
 }

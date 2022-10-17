@@ -91,7 +91,6 @@ definitions:
     - email
     - username
     type: object
-host: localhost:7000
 info:
   contact:
     email: zayyanramadhan@gmail.com
